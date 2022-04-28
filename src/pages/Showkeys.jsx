@@ -17,10 +17,12 @@ export default function Showkeys() {
          {setData(response.data);
         setIsLoaded(true)}
         else
-        setMessage("Error Loading your Data.")
+       { 
+      setMessage("Error Loading your Data.")}
        })
        .catch(function (error) {
          console.log(error);
+          setMessage("Error Loading your Data.");
        });
   },[params.uniqueId])
   return (
