@@ -31,33 +31,34 @@ function VerifySignature() {
   }
   function handleSubmit(e) {
       e.preventDefault();
-      axios.post('http://localhost:5000/verifysignature', data)
-  .then(function (response) {
-    console.log(response.data);
-    switch(response.data){
-      case true:
-        {
-           setLoaded(true)
-      setVerified(true)
-      setMessage("Signature is valid")
-           break;
-        }
-      case false:
-        {
-        setLoaded(true)
-        setMessage("Invalid Signature")
-            break;
-        } 
-        default:{
-          setLoaded(true)
-        setMessage("ID not found in the Database")
-
-        } 
-    }
-  })
-  .catch(function (error) {
-    console.log(error);
-  });
+      axios
+        .post(
+          "https://idx-onboarding-server.herokuapp.com/verifysignature",
+          data
+        )
+        .then(function (response) {
+          console.log(response.data);
+          switch (response.data) {
+            case true: {
+              setLoaded(true);
+              setVerified(true);
+              setMessage("Signature is valid");
+              break;
+            }
+            case false: {
+              setLoaded(true);
+              setMessage("Invalid Signature");
+              break;
+            }
+            default: {
+              setLoaded(true);
+              setMessage("ID not found in the Database");
+            }
+          }
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
      
   }
   return (

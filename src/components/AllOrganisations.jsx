@@ -9,18 +9,18 @@ export default function AllOrganisations() {
     const [isLoaded ,setIsLoaded]= useState(false);
 
      useEffect(() => {
-          axios.get("http://localhost:5000/organisations")
-      .then((response) =>{
-        if(response.status === 200)
-        {
-            setOrganisations(response.data);
-            setIsLoaded(true);
-        } 
-        })
-      .catch(error => { 
-          console.log(error)
-          navigate("/error")
-        })
+          axios
+            .get("https://idx-onboarding-server.herokuapp.com/organisations")
+            .then((response) => {
+              if (response.status === 200) {
+                setOrganisations(response.data);
+                setIsLoaded(true);
+              }
+            })
+            .catch((error) => {
+              console.log(error);
+              navigate("/error");
+            });
       }
      , [navigate]);
   return (

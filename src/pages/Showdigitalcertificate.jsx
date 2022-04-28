@@ -11,14 +11,14 @@ export default function Showdigitalcertificate() {
  
   useEffect(()=>{
      axios
-       .get(`http://localhost:5000/findcertificate/${params.uniqueId}`)
+       .get(
+         `https://idx-onboarding-server.herokuapp.com/findcertificate/${params.uniqueId}`
+       )
        .then(function (response) {
-         if(response.status === 200)
-         {setData(response.data);
-        setIsLoaded(true)
-      }
-        else
-        setMessage("Error Loading your Data.")
+         if (response.status === 200) {
+           setData(response.data);
+           setIsLoaded(true);
+         } else setMessage("Error Loading your Data.");
        })
        .catch(function (error) {
          console.log(error);

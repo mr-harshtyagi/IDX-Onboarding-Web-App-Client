@@ -11,18 +11,20 @@ export default function Showkeys() {
  
   useEffect(()=>{
      axios
-       .get(`http://localhost:5000/findkeys/${params.uniqueId}`)
+       .get(
+         `https://idx-onboarding-server.herokuapp.com/findkeys/${params.uniqueId}`
+       )
        .then(function (response) {
-         if(response.status === 200)
-         {setData(response.data);
-        setIsLoaded(true)}
-        else
-       { 
-      setMessage("Error Loading your Data.")}
+         if (response.status === 200) {
+           setData(response.data);
+           setIsLoaded(true);
+         } else {
+           setMessage("Error Loading your Data.");
+         }
        })
        .catch(function (error) {
          console.log(error);
-          setMessage("Error Loading your Data.");
+         setMessage("Error Loading your Data.");
        });
   },[params.uniqueId])
   return (

@@ -26,16 +26,21 @@ export default function Form() {
    
   function handleSubmit(e){
       e.preventDefault();
-      axios.post("http://localhost:5000/postdatatoserver", data)
-      .then((response) =>{
-        if(response.status === 200)
-        {
-          console.log(response.data);
-          navigate("/formsubmitted")} 
-    })
-    .catch(error => {
-      console.log(error)
-    navigate("/error")})
+      axios
+        .post(
+          "https://idx-onboarding-server.herokuapp.com/postdatatoserver",
+          data
+        )
+        .then((response) => {
+          if (response.status === 200) {
+            console.log(response.data);
+            navigate("/formsubmitted");
+          }
+        })
+        .catch((error) => {
+          console.log(error);
+          navigate("/error");
+        });
   }
 
 
